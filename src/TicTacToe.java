@@ -6,9 +6,10 @@ public class TicTacToe {
         int[][] pos = new int[3][3];
         int player = 1;
         int win = 0;
+
         String[] options = new String[] {"1a", "1b", "1c", "2a", "2b", "2c","3a","3b","3c"};
 
-        for(int turn = 1; turn < 10; turn++){
+        for(int turn = 1; turn < 10; turn++) {
 
             //round count, current player, ascci playfield and option
             int response = JOptionPane.showOptionDialog(null, "Runda " + turn + "! \n Det är spelare " + player + ":s tur \n\n  a b c\n1 " + pos[0][0] + pos[0][1] + pos[0][2] + "\n2 " + pos[1][0] + pos[1][1] + pos[1][2] + "\n3 " + pos[2][0] + pos[2][1] + pos[2][2], "Title",
@@ -16,83 +17,107 @@ public class TicTacToe {
                     null, options, options[0]);
 
             //absolutely horrendous code to choose what square to fill
-            if(response == 0){
-                pos [0][0] = player;
+            if (response == 0) {
+                pos[0][0] = player;
             }
-            if(response == 1){
-                    pos [0][1] = player;
-                }
-            if(response == 2){
-                        pos [0][2] = player;
-                    }
-            if(response == 3){
-                            pos [1][0] = player;
-                        }
-            if(response == 4){
-                                pos [1][1] = player;
-                            }
-            if(response == 5){
-                                    pos [1][2] = player;
-                                }
-            if(response == 6){
-                                        pos [2][0] = player;
-                                    }
-            if(response == 7){
-                                            pos [2][1] = player;
-                                        }
-            if(response == 8){
-                                                pos [2][2] = player;
-                                            }
+            if (response == 1) {
+                pos[0][1] = player;
+            }
+            if (response == 2) {
+                pos[0][2] = player;
+            }
+            if (response == 3) {
+                pos[1][0] = player;
+            }
+            if (response == 4) {
+                pos[1][1] = player;
+            }
+            if (response == 5) {
+                pos[1][2] = player;
+            }
+            if (response == 6) {
+                pos[2][0] = player;
+            }
+            if (response == 7) {
+                pos[2][1] = player;
+            }
+            if (response == 8) {
+                pos[2][2] = player;
+            }
+
             //horizontal check
-            for (int k=0; k<3; k++) {
-                if (pos [0][k] == 0){
-                    break;
-                }
-                else
-                    if (pos [k][0] == pos[k][1] && pos [k][0] == pos[k][2]){
-                        win++;
+            for (int k = 0; k < 3; k++) {
+                int rad = 0;
+                for (int i = 0; i < 3; i++) {
+                    if (pos[k][i] != player) {
+                    } else {
+                        rad++;
+                        if (rad == 3) {
+                            win++;
+                        }
                     }
+                }
             }
 
             //vertical check
-            for (int k=0; k<3; k++) {
-                if (pos [0][k] == 0){
-                    break;
+            for (int k = 0; k < 3; k++) {
+                int rad = 0;
+                for (int i = 0; i < 3; i++) {
+                    if (pos[i][k] != player) {
+                    } else {
+                        rad++;
+                        if (rad == 3) {
+                            win++;
+                        }
+                    }
                 }
-                else
-                    if (pos [0][k] == pos[1][k] && pos [0][k] == pos[2][k]){
+            }
+
+            //top-bottom diagonal check
+            int rad = 0;
+            for (int k = 0; k < 3; k++) {
+                if (pos[k][k] != player) {
+                } else {
+                    rad++;
+                    if (rad == 3) {
+                        win++;
+                        }
+                    }
+                }
+
+            //bottom-top diagonal check
+            int brad = 0;
+            for (int k = 0; k < 3; k++) {
+                if (pos[2 - k][k] != player) {
+                } else {
+                    brad++;
+                    if (brad == 3) {
                         win++;
                     }
+                }
             }
 
-            //top-down diagonal check
-            for (int k=0; k<3; k++;) {
-
-                int i = 0;
 
 
-                if (posD0 == posD1 && posD0 == posD0){
-                    win++;
-                }
-                i++;
-            }
-
-            //bottom-up diagonal check
-            for (int k=0; k<3; k++) {
-                if (pos [k][0] == pos[k][1] && pos [k][0] == pos[k][2]){
-                    win++;
-                }
+            //terrible win condition checker
+            //|| Ej1ner == 0 || Ej1up == 0 || Ej2ner == 0 || Ej2up == 0) {
+            if (win == 1) {
+                JOptionPane.showMessageDialog(null, "Spelare " + player + " vann!");
+                System.exit(0);
             }
 
             //Player alternater
-            if(player == 1){
-            player++;
+
+            if (player == 1) {
+                player++;
             }
-            else
+            else {
                 player--;
+            }
+            }
         }
     }
-}
+
 
 
 
