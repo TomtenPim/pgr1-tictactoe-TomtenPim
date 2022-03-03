@@ -49,8 +49,7 @@ public class TicTacToe {
             for (int k = 0; k < 3; k++) {
                 int rad = 0;
                 for (int i = 0; i < 3; i++) {
-                    if (pos[k][i] != player) {
-                    } else {
+                    if (pos[k][i] == player) {
                         rad++;
                         if (rad == 3) {
                             win++;
@@ -63,8 +62,7 @@ public class TicTacToe {
             for (int k = 0; k < 3; k++) {
                 int rad = 0;
                 for (int i = 0; i < 3; i++) {
-                    if (pos[i][k] != player) {
-                    } else {
+                    if (pos[i][k] == player) {
                         rad++;
                         if (rad == 3) {
                             win++;
@@ -76,8 +74,7 @@ public class TicTacToe {
             //top-bottom diagonal check
             int rad = 0;
             for (int k = 0; k < 3; k++) {
-                if (pos[k][k] != player) {
-                } else {
+                if (pos[k][k] == player) {
                     rad++;
                     if (rad == 3) {
                         win++;
@@ -88,8 +85,7 @@ public class TicTacToe {
             //bottom-top diagonal check
             int brad = 0;
             for (int k = 0; k < 3; k++) {
-                if (pos[2 - k][k] != player) {
-                } else {
+                if (pos[2 - k][k] == player) {
                     brad++;
                     if (brad == 3) {
                         win++;
@@ -115,6 +111,7 @@ public class TicTacToe {
                 player--;
             }
             }
+        JOptionPane.showMessageDialog(null,"Ingen vann!");
         }
     }
 
