@@ -95,8 +95,7 @@ public class TicTacToe {
 
 
 
-            //terrible win condition checker
-            //|| Ej1ner == 0 || Ej1up == 0 || Ej2ner == 0 || Ej2up == 0) {
+            //win condition checker
             if (win == 1) {
                 JOptionPane.showMessageDialog(null, "Spelare " + player + " vann!");
                 System.exit(0);
